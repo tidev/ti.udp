@@ -15,4 +15,4 @@ name: udp
 moduleid: ti.udp
 guid: ca89bfc9-3a59-4e1e-b69c-33998d976896
 platform: android
-minsdk: 1.7.5
+minsdk: 3.2.2.GA
