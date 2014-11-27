@@ -1,6 +1,6 @@
 var UDP = require('ti.udp');
 console.log('My IP Address: ' + Ti.Platform.address);
-var u = Ti.Android != undefined ? 'dp' : 0;
+var u = Ti.Android !== undefined ? 'dp' : 0;
 var win = Ti.UI.createWindow({
     backgroundColor: '#fff',
     layout: 'vertical'
