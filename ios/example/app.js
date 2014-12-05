@@ -1,6 +1,6 @@
 var UDP = require('ti.udp');
-
-var u = Ti.Android != undefined ? 'dp' : 0;
+console.log('My IP Address: ' + Ti.Platform.address);
+var u = Ti.Android !== undefined ? 'dp' : 0;
 var win = Ti.UI.createWindow({
     backgroundColor: '#fff',
     layout: 'vertical'
@@ -16,9 +16,12 @@ var socket = UDP.createSocket();
  */
 var startSocket = Ti.UI.createButton({
     title: 'Start Socket',
-    top: 10 + u, left: 10 + u, right: 10 + u, height: 40 + u
+    top: 10 + u,
+    left: 10 + u,
+    right: 10 + u,
+    height: 40 + u
 });
-startSocket.addEventListener('click', function () {
+startSocket.addEventListener('click', function() {
     socket.start({
         port: 6100
     });
@@ -26,7 +29,10 @@ startSocket.addEventListener('click', function () {
 win.add(startSocket);
 
 var sendTo = Ti.UI.createTextField({
-    height: 44 + u, top: 10 + u, left: 10 + u, right: 10 + u,
+    height: 44 + u,
+    top: 10 + u,
+    left: 10 + u,
+    right: 10 + u,
     borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
     value: Ti.App.Properties.getString('SavedSendTo', '')
 });
@@ -37,9 +43,12 @@ win.add(sendTo);
  */
 var sendString = Ti.UI.createButton({
     title: 'Send String to Specific',
-    top: 10 + u, left: 10 + u, right: 10 + u, height: 40 + u
+    top: 10 + u,
+    left: 10 + u,
+    right: 10 + u,
+    height: 40 + u
 });
-sendString.addEventListener('click', function () {
+sendString.addEventListener('click', function() {
     Ti.App.Properties.setString('SavedSendTo', sendTo.value);
     socket.sendString({
         host: sendTo.value,
@@ -53,13 +62,16 @@ win.add(sendString);
  */
 var sendBytes = Ti.UI.createButton({
     title: 'Send Bytes to Specific',
-    top: 10 + u, left: 10 + u, right: 10 + u, height: 40 + u
+    top: 10 + u,
+    left: 10 + u,
+    right: 10 + u,
+    height: 40 + u
 });
-sendBytes.addEventListener('click', function () {
+sendBytes.addEventListener('click', function() {
     Ti.App.Properties.setString('SavedSendTo', sendTo.value);
     socket.sendBytes({
         host: sendTo.value,
-        data: [ 181, 10, 0, 0 ]
+        data: [181, 10, 0, 0]
     });
 });
 win.add(sendBytes);
@@ -69,9 +81,12 @@ win.add(sendBytes);
  */
 var broadcastString = Ti.UI.createButton({
     title: 'Broadcast String',
-    top: 10 + u, left: 10 + u, right: 10 + u, height: 40 + u
+    top: 10 + u,
+    left: 10 + u,
+    right: 10 + u,
+    height: 40 + u
 });
-broadcastString.addEventListener('click', function () {
+broadcastString.addEventListener('click', function() {
     socket.sendString({
         data: 'Hello, UDP!'
     });
@@ -81,14 +96,14 @@ win.add(broadcastString);
 /*
  Listen for when the server or client is ready.
  */
-socket.addEventListener('started', function (evt) {
+socket.addEventListener('started', function(evt) {
     status.text = 'Started!';
 });
 
 /*
  Listen for data from network traffic.
  */
-socket.addEventListener('data', function (evt) {
+socket.addEventListener('data', function(evt) {
     status.text = JSON.stringify(evt);
     Ti.API.info(JSON.stringify(evt));
 });
@@ -96,7 +111,7 @@ socket.addEventListener('data', function (evt) {
 /*
  Listen for errors.
  */
-socket.addEventListener('error', function (evt) {
+socket.addEventListener('error', function(evt) {
     status.text = JSON.stringify(evt);
     Ti.API.info(JSON.stringify(evt));
 });
@@ -106,16 +121,22 @@ socket.addEventListener('error', function (evt) {
  */
 var stop = Ti.UI.createButton({
     title: 'Stop',
-    top: 10 + u, left: 10 + u, right: 10 + u, height: 40 + u
+    top: 10 + u,
+    left: 10 + u,
+    right: 10 + u,
+    height: 40 + u
 });
-stop.addEventListener('click', function () {
+stop.addEventListener('click', function() {
     socket.stop();
 });
 win.add(stop);
 
 var status = Ti.UI.createLabel({
     text: 'Press Start Socket to Begin',
-    top: 10 + u, left: 10 + u, right: 10 + u, height: Ti.UI.SIZE || 'auto'
+    top: 10 + u,
+    left: 10 + u,
+    right: 10 + u,
+    height: Ti.UI.SIZE || 'auto'
 });
 win.add(status);
 
