@@ -10,10 +10,12 @@ Marshals UDP traffic.
 Starts the socket. Takes a dictionary with the following values:
 
 * int port: The port on which to listen.
+* string group [optional]: The multicast group address to which we will listen.
 
 ### void sendString(dictionary args)
 Sends a string of data over UDP. Takes a dictionary with the following values:
 
+* string group [optional]: The multicast group address to which data will be sent. Host overrides this.
 * string host [optional]: The host address to which data will be sent. Broadcasts if no host is specified.
 * int port [optional]: The port on which to listen. Uses the port the socket was created with if not specified.
 * string data: The string to send.
@@ -21,6 +23,7 @@ Sends a string of data over UDP. Takes a dictionary with the following values:
 ### void sendBytes(dictionary args)
 Sends bytes over UDP. Takes a dictionary with the following values:
 
+* string group [optional]: The multicast group address to which data will be sent. Host overrides this.
 * string host [optional]: The host address to which data will be sent. Broadcasts if no host is specified.
 * int port [optional]: The port on which to listen. Uses the port the socket was created with if not specified.
 * int[] data: The bytes to send.

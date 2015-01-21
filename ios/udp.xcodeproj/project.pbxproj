@@ -30,6 +30,10 @@
 		A858C57614969D260013D9EB /* TiUdpSocketProxy.mm in Sources */ = {isa = PBXBuildFile; fileRef = A858C57414969D260013D9EB /* TiUdpSocketProxy.mm */; };
 		AA747D9F0F9514B9006C5449 /* TiUdp_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* TiUdp_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		AC7815361A702B16002CA9D8 /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = AC7815321A702B16002CA9D8 /* GCDAsyncSocket.h */; };
+		AC7815371A702B16002CA9D8 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7815331A702B16002CA9D8 /* GCDAsyncSocket.m */; };
+		AC7815381A702B16002CA9D8 /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = AC7815341A702B16002CA9D8 /* GCDAsyncUdpSocket.h */; };
+		AC7815391A702B16002CA9D8 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7815351A702B16002CA9D8 /* GCDAsyncUdpSocket.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +56,10 @@
 		A858C57414969D260013D9EB /* TiUdpSocketProxy.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = TiUdpSocketProxy.mm; path = Classes/TiUdpSocketProxy.mm; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* TiUdp_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiUdp_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AC7815321A702B16002CA9D8 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		AC7815331A702B16002CA9D8 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		AC7815341A702B16002CA9D8 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		AC7815351A702B16002CA9D8 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libTiUdp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTiUdp.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -78,6 +86,7 @@
 		0867D691FE84028FC02AAC07 /* udp */ = {
 			isa = PBXGroup;
 			children = (
+				AC7815311A702B16002CA9D8 /* Vendor */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
@@ -116,6 +125,17 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
+		AC7815311A702B16002CA9D8 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				AC7815321A702B16002CA9D8 /* GCDAsyncSocket.h */,
+				AC7815331A702B16002CA9D8 /* GCDAsyncSocket.m */,
+				AC7815341A702B16002CA9D8 /* GCDAsyncUdpSocket.h */,
+				AC7815351A702B16002CA9D8 /* GCDAsyncUdpSocket.m */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -124,6 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA747D9F0F9514B9006C5449 /* TiUdp_Prefix.pch in Headers */,
+				AC7815381A702B16002CA9D8 /* GCDAsyncUdpSocket.h in Headers */,
+				AC7815361A702B16002CA9D8 /* GCDAsyncSocket.h in Headers */,
 				24DD6CF91134B3F500162E58 /* TiUdpModule.h in Headers */,
 				24DE9E1111C5FE74003F90F6 /* TiUdpModuleAssets.h in Headers */,
 				A858C57514969D260013D9EB /* TiUdpSocketProxy.h in Headers */,
@@ -200,6 +222,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC7815371A702B16002CA9D8 /* GCDAsyncSocket.m in Sources */,
+				AC7815391A702B16002CA9D8 /* GCDAsyncUdpSocket.m in Sources */,
 				24DD6CFA1134B3F500162E58 /* TiUdpModule.m in Sources */,
 				24DE9E1211C5FE74003F90F6 /* TiUdpModuleAssets.m in Sources */,
 				A858C57614969D260013D9EB /* TiUdpSocketProxy.mm in Sources */,
