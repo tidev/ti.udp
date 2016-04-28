@@ -20,4 +20,11 @@
 	return @"ti.udp";
 }
 
+#pragma mark Public API
+
+-(NSString*)apiName
+{
+	return @"Ti.UDP";
+}
+
 @end
