@@ -227,7 +227,7 @@ static NSArray* GetBytesFromData(NSData* data)
     assert(sock >= 0);
     
     id host = [args objectForKey:@"host"];
-    int port = [TiUtils intValue:[args objectForKey:@"port"] def:_port];
+    int port = [TiUtils intValue:[args objectForKey:@"port"] def:(int)_port];
     
     if (host == nil)
     {

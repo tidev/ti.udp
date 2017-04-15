@@ -1,0 +1,3 @@
+"/Users/hknoechel/Documents/appcelerator_modules/ti.udp/android/build/generated/java/ti/udp/UdpBootstrap.java"
+"/Users/hknoechel/Documents/appcelerator_modules/ti.udp/android/src/ti/udp/SocketProxy.java"
+"/Users/hknoechel/Documents/appcelerator_modules/ti.udp/android/src/ti/udp/UdpModule.java"

@@ -20,7 +20,6 @@ import org.appcelerator.kroll.KrollProxy;
 import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.kroll.common.Log;
 import org.appcelerator.titanium.TiApplication;
-import org.appcelerator.titanium.TiContext;
 import org.appcelerator.titanium.util.TiConvert;
 
 import android.app.Activity;
@@ -43,8 +42,8 @@ public class SocketProxy extends KrollProxy {
 	private Integer _bufferSize = 256;
 
 	// Constructor
-	public SocketProxy(TiContext tiContext) {
-		super(tiContext);
+	public SocketProxy() {
+		super();
 	}
 
 	// Start Utility Methods

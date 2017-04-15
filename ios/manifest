@@ -2,7 +2,7 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 1.2.0
+version: 1.3.0
 architectures: armv7 i386 x86_64 arm64
 description: Provides access to the UDP protocol for sending packets across a network.
 author: Dawson Toth
@@ -15,4 +15,4 @@ name: udp
 moduleid: ti.udp
 guid: ca89bfc9-3a59-4e1e-b69c-33998d976896
 platform: iphone
-minsdk: 3.4.1.GA
+minsdk: 3.5.0.GA
