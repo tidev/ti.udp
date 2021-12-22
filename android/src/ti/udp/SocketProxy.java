@@ -99,6 +99,7 @@ public class SocketProxy extends KrollProxy {
 		HashMap<String, Object> evt = new HashMap<String, Object>();
 		evt.put("error", obj.toString());
 		fireEvent("error", evt);
+		Log.e(LCAT, "ERROR: " + obj.toString());
 	}
 
 	private void startListening() {
@@ -148,13 +149,11 @@ public class SocketProxy extends KrollProxy {
 	// End Utility Methods
 
 	// Start Public API
-	@Kroll.method
 	@Kroll.setProperty
 	public void setBufferSize(int size) {
 		_bufferSize = size;
 	}
 
-	@Kroll.method
 	@Kroll.getProperty
 	public int getBufferSize() {
 		return _bufferSize;
@@ -177,7 +176,7 @@ public class SocketProxy extends KrollProxy {
 			startListening();
 
 			fireStarted();
-			Log.i(LCAT, "Socket Started!");
+			Log.d(LCAT, "Socket Started!");
 
 		} catch (SocketException e) {
 			fireError(e);
@@ -188,47 +187,59 @@ public class SocketProxy extends KrollProxy {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void sendString(HashMap hm) {
 		KrollDict args = new KrollDict(hm);
-		try {
-			if (_socket == null) {
-				fireError("Cannot send data before the socket is started as a client or server!");
-				return;
-			}
-			String data = args.getString("data");
-			byte[] bytes = data.getBytes();
+		Thread thread = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					if (_socket == null) {
+						fireError("Cannot send data before the socket is started as a client or server!");
+						return;
+					}
+					String data = args.getString("data");
+					byte[] bytes = data.getBytes();
 
-			String host = args.getString("host");
-			int port = args.optInt("port", _port);
-			InetAddress _address = host != null ? InetAddress.getByName(host) : getBroadcastAddress();
-			_socket.send(new DatagramPacket(bytes, bytes.length, _address, port));
-			Log.i(LCAT, "Data Sent!");
-		} catch (IOException e) {
-			fireError(e);
-		}
+					String host = args.getString("host");
+					int port = args.optInt("port", _port);
+					InetAddress _address = host != null ? InetAddress.getByName(host) : getBroadcastAddress();
+					_socket.send(new DatagramPacket(bytes, bytes.length, _address, port));
+					Log.d(LCAT, "Data Sent!");
+				} catch (Exception e) {
+					fireError(e);
+				}
+			}
+		});
+		thread.start();
 	}
 
 	@Kroll.method
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void sendBytes(HashMap hm) {
 		KrollDict args = new KrollDict(hm);
-		try {
-			if (_socket == null) {
-				fireError("Cannot send data before the socket is started as a client or server!");
-				return;
-			}
-			Object[] data = (Object[]) args.get("data");
-			byte[] bytes = new byte[data.length];
-			for (int i = 0; i < bytes.length; i++) {
-				bytes[i] = (byte) TiConvert.toInt(data[i]);
-			}
+		Thread thread = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					if (_socket == null) {
+						fireError("Cannot send data before the socket is started as a client or server!");
+						return;
+					}
+					Object[] data = (Object[]) args.get("data");
+					byte[] bytes = new byte[data.length];
+					for (int i = 0; i < bytes.length; i++) {
+						bytes[i] = (byte) TiConvert.toInt(data[i]);
+					}
 
-			String host = args.getString("host");
-			int port = args.optInt("port", _port);
-			InetAddress _address = host != null ? InetAddress.getByName(host) : getBroadcastAddress();
-			_socket.send(new DatagramPacket(bytes, bytes.length, _address, port));
-			Log.i(LCAT, "Data Sent!");
-		} catch (IOException e) {
-			fireError(e);
-		}
+					String host = args.getString("host");
+					int port = args.optInt("port", _port);
+					InetAddress _address = host != null ? InetAddress.getByName(host) : getBroadcastAddress();
+					_socket.send(new DatagramPacket(bytes, bytes.length, _address, port));
+					Log.d(LCAT, "Data Sent!");
+				} catch (Exception e) {
+					fireError(e);
+				}
+			}
+		});
+		thread.start();
 	}
 
 	@Kroll.method
@@ -237,7 +248,7 @@ public class SocketProxy extends KrollProxy {
 			stopListening();
 			_socket.close();
 			_socket = null;
-			Log.i(LCAT, "Stopped!");
+			Log.d(LCAT, "Stopped!");
 		}
 	}
 
