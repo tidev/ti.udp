@@ -178,7 +178,7 @@ public class SocketProxy extends KrollProxy {
 			fireStarted();
 			Log.d(LCAT, "Socket Started!");
 
-		} catch (SocketException e) {
+		} catch (Exception e) {
 			fireError(e);
 		}
 	}
