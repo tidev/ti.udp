@@ -2,7 +2,7 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 4.0.0
+version: 4.1.0
 apiversion: 4
 architectures: arm64-v8a armeabi-v7a x86 x86_64
 description: Provides access to the UDP protocol for sending packets across a network.
@@ -15,4 +15,4 @@ name: udp
 moduleid: ti.udp
 guid: ca89bfc9-3a59-4e1e-b69c-33998d976896
 platform: android
-minsdk: 9.0.0
+minsdk: 12.7.0
